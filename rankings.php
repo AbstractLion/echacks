@@ -52,12 +52,13 @@ circle {
     return pie;
   }
 
-  $.post("/accounts/get_current_user_uuid.php", function(uuid) {
+  $.post("/scripts/get_current_user_uuid.php", function(uuid) {
     getGroup(uuid);
   });
   
   function getGroup(uuid) {
-    $.post("get_group.php", {id: uuid}, function(data) {
+    $.post("/scripts/get_group.php", {id: uuid}, function(data) {
+      console.log(data);
       let rankBoxes = [];
       // contains an array of uuids of group
       data = JSON.parse(data);
