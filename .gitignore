@@ -1,2 +1,3 @@
 # ignore sql credentials
 credentials/
+.DS_Store
