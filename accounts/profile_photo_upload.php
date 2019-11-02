@@ -14,8 +14,7 @@ if (isset($_FILES['upload_file'])) {
         if (in_array($file_extension, $allowed_extensions) === false)
             $errors[] = "File must be a JPEG!";
         if (empty($errors) == true) {
-            file_put_contents("{$_SERVER['DOCUMENT_ROOT']}/profile_photos/$user_uuid.txt", "hi");
-            move_uploaded_file($_FILES['upload_file']['tmp_name'], "{$_SERVER['DOCUMENT_ROOT']}/profile_photos/$user_uuid.jpg");
+            move_uploaded_file($_FILES['upload_file']['tmp_name'], __DIR__."/profile_photos/$user_uuid.jpg");
         } else {
             print_r($errors);
         }
