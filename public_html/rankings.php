@@ -33,7 +33,7 @@ circle {
   function $$(selector, context) { context = context || document; var elements = context.querySelectorAll(selector); return Array.prototype.slice.call(elements); }
   // very distracted time, distracted time, neutral time, productive time, very productive time
   function createPie(very_distracted, distracted, neutral, productive, very_productive) {
-    var pie = $('<div class="pie"></div>')
+    var pie = $('<div class="pie"></div>');
     var p = parseFloat(pie.textContent);
     var NS = "http://www.w3.org/2000/svg";
     var svg = document.createElementNS(NS, "svg");
@@ -50,10 +50,15 @@ circle {
     svg.appendChild(circle);
     pie.appendChild(svg);
     return pie;
-  });
   }
-  /*
-  $.post("getgroup.php", function(data) {
+
+  $.post("getuser.php", function(json) {
+    user = JSON.parse(json);
+    getGroup(user);
+  });
+  
+  function getGroup(user) {
+    $.post("getgroup.php", {id: user.id}, function(data) {
     let rankBoxes = [];
     // contains an array of uuids of group
     data = JSON.parse(data);
@@ -76,8 +81,6 @@ circle {
         let userPie = $('<div class="pie"></div>');
         userPie.html("60%");
 
-
-
         // [Rank, Time Spent (seconds), Number of People, Activity, Category, Productivity]
         
         
@@ -93,9 +96,10 @@ circle {
 
     // sort rankBoxes
 
-  });
-  */
-  $(function(){createPies()});
+    });
+  }
+
+  // $(function(){createPies()});
 </script>
 </body>
 </html>
