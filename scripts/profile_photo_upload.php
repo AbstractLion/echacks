@@ -1,7 +1,7 @@
 <?php
 include "../database_connect.php";
 if (isset($_FILES['upload_file'])) {
-    $get_user_uuid = $sql_connection->query("select user_uuid from active_sessions where session_uuid = '{$_COOKIE['SESSION_UUID']}'");
+    $get_user_uuid = $db->query("select user_uuid from active_sessions where session_uuid = '{$_COOKIE['SESSION_UUID']}'");
     if ($get_user_uuid->num_rows >= 1) {
         $user_uuid = null;
         extract($get_user_uuid->fetch_assoc());
