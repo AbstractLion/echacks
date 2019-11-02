@@ -57,7 +57,7 @@ circle {
   });
   
   function getGroup(uuid) {
-    $.post("getgroup.php", {id: uuid}, function(data) {
+    $.post("get_group.php", {id: uuid}, function(data) {
       let rankBoxes = [];
       // contains an array of uuids of group
       data = JSON.parse(data);
