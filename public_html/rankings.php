@@ -31,7 +31,7 @@ circle {
 </div>
 <script>
   function $$(selector, context) { context = context || document; var elements = context.querySelectorAll(selector); return Array.prototype.slice.call(elements); }
-  // very distracted time, distracted time, neutral time, productive time, very productive time
+
   function createPie(very_distracted, distracted, neutral, productive, very_productive) {
     var pie = $('<div class="pie"></div>');
     var p = parseFloat(pie.textContent);
@@ -52,53 +52,43 @@ circle {
     return pie;
   }
 
-  $.post("getuser.php", function(json) {
-    user = JSON.parse(json);
-    getGroup(user);
+  $.post("get_current_user_uuid.php", function(uuid) {
+    getGroup(uuid);
   });
   
-  function getGroup(user) {
-    $.post("getgroup.php", {id: user.id}, function(data) {
-    let rankBoxes = [];
-    // contains an array of uuids of group
-    data = JSON.parse(data);
-    for (let i = 0; i < data.length; ++i) {
-      let rankBox = $('<div></div>');
-      rankBox.attr('class', 'ranking-box');
-
-      $.post("getprofile.php", {"user_uuid": data[i]}, function(json) {
-        let profile = JSON.parse(json);
-        let userImgContainer = $('<div class="profile-pic-container"></div>');
-        let userImg = $('<img class = "profile-pic"/>');
-        userImg.attr('src', `/profile-images/${profile.user_uuid}.jpg`);
-        userImgContainer.appendChild(userImg);
-        rankBox.appendChild(userImgContainer);
-      });
-
-      $.post("getdata.php", function(json) {
-        data = JSON.parse(json);
-
-        let userPie = $('<div class="pie"></div>');
-        userPie.html("60%");
-
-        // [Rank, Time Spent (seconds), Number of People, Activity, Category, Productivity]
-        
-        
-
-
-        // Parsing RescueTime Data
-        console.log(data);
-        
-      });
-
-      rankBoxes.push(rankBox);
-    }
-
-    // sort rankBoxes
-
+  function getGroup(uuid) {
+    $.post("getgroup.php", {id: uuid}, function(data) {
+      let rankBoxes = [];
+      // contains an array of uuids of group
+      data = JSON.parse(data);
+      for (let i = 0; i < data.length; ++i) {
+        rankBoxes.push(createRankBox(data[i]));
+      }
+      displayRankBoxes(rankBoxes);
     });
   }
 
+  // TODO: Sort rank boxes and append them to ranks
+  function displayRankBoxes(rankBoxes) {
+
+  }
+
+  function createRankBox(uuid) {
+    let rankBox = $('<div></div>');
+    rankBox.attr('class', 'rank-box');
+    createUserPicture(uuid);
+  }
+
+  // returns a pie chart around a user's profile picture
+  function createUserPicture(uuid) {
+    $.post("get_user_daily_summary.php", {"user_uuid": uuid}, function(json) {
+      let data = JSON.parse(json);
+      let d = data[0];
+
+      let pie = createPie(d.very_distracting_percentage, d.distracting_percentage, d.neutral_percentage, d.productive_percentage, d.very_productive_percentage);
+      
+    });
+  }
   // $(function(){createPies()});
 </script>
 </body>
