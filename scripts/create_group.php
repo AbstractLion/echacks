@@ -14,7 +14,5 @@ if ($get_user_uuid->num_rows >= 1) {
 } else {
   echo 'An error occurred.';
 }
-
-
-  $db->query("insert into pacts (group_uuid, user_uuid_array, leader_uuid, group_name, password) values ($group_id, $user_uuid, $user_uuid, $group_name, $group_pass)");
+$db->query("insert into pacts (group_uuid, user_uuid_array, leader_uuid, group_name, password) values ('$group_id', '$user_uuid', '$user_uuid', '$group_name', '$group_pass')");
 ?>
