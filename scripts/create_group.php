@@ -1,6 +1,6 @@
 <?php
 $group_name = $_POST["name"];
-$group_pass = password_hash($_POST["password"]);
+$group_pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
 $group_id = uniqid();
 
 if (!isset($_COOKIE['SESSION_UUID'])) {echo 'Not logged in.'; return;}
