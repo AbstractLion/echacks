@@ -1,1 +1,1 @@
-php_value auto_prepend_file "/opt/lampp/htdocs/prepend.php"
+php_value auto_prepend_file "/Users/leonzalion/Desktop/echacks/database_connect.php"
