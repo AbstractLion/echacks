@@ -10,36 +10,49 @@
     font-family: Lato;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .fact-box:nth-child(odd) {
+    background-color: lightgrey;
   }
   .fact {
-
+    margin: 5px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    align-items: center;
+    justify-items: center;
+    padding: 10px;
   }
-  .fact > .img {
-    float: left;
+  .fact > .img > img {
+    max-height: 100px;
+    max-width: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    border-radius: 50px;
   }
   .fact > .desc {
-    
+    margin: 10px;
   }
   #home-page-banner {
     font-family: Lato;
-    display: flex;
+    display: grid;
     font-weight: bold;
-    flex-direction: column;
+    grid-template-rows: 150px 250px;
+    justify-items: center;
     align-items: center;
-    justify-content: center;
-    height: 40vh;
+    height: 400px;
     width: 100%;
     background-image: url("images/banner.jpg");
     background-position: 0% 100%;
   }
-  #home-page-banner > .title {
-    display: inline-block;
+  #home-page-banner .title {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
   }
   #home-page-banner .desc {
-    display: inline-block;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -49,21 +62,19 @@
 <body>
   <div id="tab-container"></div>
   <div id="home-page-banner">
-    <div class="title">
-      TimeTract
-    </div>
-    <div class="desc">
-        Commitment through tracking.
+    <div>
+    <div class="title">TimeTract</div>
+    <div class="desc">Accountability at its peak.</div>
     </div>
   </div>
   <div id="content">
     <div class="fact-box">
       <div class="fact">
         <div class="img">
-          <img src="test.jpg" height="100" width="100" />
+          <img src="images/test.jpg">
         </div>
         <div class="desc">
-          [Name] is an application that combines time-tracking with competition, motivating you to spend your time more wisely knowing that it can be seen by others.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </div>
       </div>
     </div>
