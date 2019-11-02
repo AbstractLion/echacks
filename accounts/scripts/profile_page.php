@@ -5,7 +5,7 @@ extract($query_string);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="../js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     <script>
         $.post("get_user_from_uuid.php", { user_uuid : "<?php echo $user_uuid?>" }, function(data) {
             data = JSON.parse(data);
