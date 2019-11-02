@@ -1,3 +1,4 @@
 # ignore sql credentials
 credentials/
+accounts/profile_photos
 .DS_Store
