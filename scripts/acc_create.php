@@ -16,5 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $session_uuid = uniqid();
         $db->query("insert into active_sessions (session_uuid, user_uuid, expiry) values ('{$session_uuid}', '{$uuid}', '{$expiry_time}')");
         setcookie("SESSION_UUID", $session_uuid, $expiry_time, "/");
+
+        header("Location: ../group_options.php");
+        die();
     }
 }
