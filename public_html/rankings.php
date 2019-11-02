@@ -52,7 +52,7 @@ circle {
     return pie;
   }
 
-  $.post("/accounts/get_current_user_uuid.php", function(uuid) {
+  $.post("accounts/get_current_user_uuid.php", function(uuid) {
     getGroup(uuid);
   });
   
