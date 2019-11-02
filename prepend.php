@@ -1,7 +1,6 @@
 <?php
 include "credentials/sql_credentials.php";
 $sql_connection = new mysqli($server_name,$db_username,$db_password,$database_name);
-$db = $sql_connection;
 
 // Create necessary tables
 
